@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VETSERVICE2GO - Mi panel</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body data-rol="cliente">
+
+  <!-- Barra con el nombre de quien inició sesión (lo llena js/sesion.js) -->
+  <header class="barra">
+    <a href="panel.html">VETSERVICE2GO</a>
+    <span class="usuario">
+      Hola, <span id="nombreUsuario"></span>
+      <button type="button" class="boton-chico" id="btnCerrarSesion">Cerrar sesión</button>
+    </span>
+  </header>
+
+  <!-- MI PANEL (dashboard): lo primero que ves al iniciar sesión -->
+  <main class="contenedor">
+
+    <h1>Mi panel</h1>
+    <p class="subtitulo">¿Qué quieres hacer hoy?</p>
+
+    <!-- Las 3 acciones principales -->
+    <div class="tarjetas">
+      <a class="tarjeta tarjeta-accion" href="mascota.html">
+        <div class="icono">🐶</div>
+        <h3>Registrar mascota</h3>
+        <p>Agrega a tu perro, gato, ave u otra mascota, con su foto.</p>
+      </a>
+      <a class="tarjeta tarjeta-accion" href="agendar.html">
+        <div class="icono">📅</div>
+        <h3>Agendar cita</h3>
+        <p>Elige la mascota, los servicios, el día y un horario disponible.</p>
+      </a>
+      <a class="tarjeta tarjeta-accion" href="recibos.html">
+        <div class="icono">🧾</div>
+        <h3>Mis recibos</h3>
+        <p>Consulta los recibos de las citas que ya agendaste.</p>
+      </a>
+    </div>
+
+    <!-- Aviso: citas que un empleado rechazó y que hay que reagendar (lo llena js/panel.js) -->
+    <section class="tarjeta aviso-rechazo" id="porReagendar" hidden>
+      <h3>❌ Tienes citas rechazadas</h3>
+      <p>La veterinaria no pudo atenderlas. Reagéndalas para elegir otro día y otra hora (ya están pagadas).</p>
+      <ul class="lista" id="listaRechazadas"></ul>
+    </section>
+
+    <!-- Información guardada en la base de datos (la llena js/panel.js) -->
+    <div class="tarjetas">
+      <section class="tarjeta">
+        <h3>Mis mascotas (<span id="totalMascotas">0</span>)</h3>
+        <ul class="lista" id="listaMascotas"></ul>
+        <p class="vacio" id="sinMascotas" hidden>Aún no has registrado mascotas.</p>
+      </section>
+      <section class="tarjeta">
+        <h3>Próximas citas</h3>
+        <ul class="lista" id="listaCitas"></ul>
+        <p class="vacio" id="sinCitas" hidden>No tienes citas próximas.</p>
+        <a class="enlace-inicio" href="recibos.html">Ver todos mis recibos →</a>
+      </section>
+    </div>
+
+  </main>
+
+  <script src="js/basedatos.js"></script>
+  <script src="js/sesion.js"></script>
+  <script src="js/formato.js"></script>
+  <script src="js/panel.js"></script>
+</body>
+</html>

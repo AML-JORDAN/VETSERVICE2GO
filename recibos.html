@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VETSERVICE2GO - Mis recibos</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body data-rol="cliente">
+
+  <header class="barra">
+    <a href="panel.html">VETSERVICE2GO</a>
+    <span class="usuario">
+      Hola, <span id="nombreUsuario"></span>
+      <button type="button" class="boton-chico" id="btnCerrarSesion">Cerrar sesión</button>
+    </span>
+  </header>
+
+  <!-- MIS RECIBOS -->
+  <main class="contenedor">
+
+    <h1>🧾 Mis recibos</h1>
+    <p class="subtitulo">Todas las citas que has agendado.</p>
+
+    <p class="vacio" id="sinRecibos" hidden>
+      Aún no tienes recibos. <a href="agendar.html">Agenda una cita</a>.
+    </p>
+
+    <div class="tabla-contenedor" id="contenedorTabla">
+      <table class="tabla">
+        <thead>
+          <tr>
+            <th>Folio</th>
+            <th>Fecha de la cita</th>
+            <th>Horario</th>
+            <th>Mascota</th>
+            <th>Servicios</th>
+            <th>Total</th>
+            <th>Estado</th>
+            <th></th>
+          </tr>
+        </thead>
+        <!-- Los renglones se agregan desde js/recibos.js -->
+        <tbody id="cuerpoTabla"></tbody>
+      </table>
+    </div>
+
+    <a class="boton boton-secundario boton-enlace" href="panel.html">Volver al panel</a>
+
+  </main>
+
+  <script src="js/basedatos.js"></script>
+  <script src="js/sesion.js"></script>
+  <script src="js/formato.js"></script>
+  <script src="js/recibos.js"></script>
+</body>
+</html>

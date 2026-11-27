@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VETSERVICE2GO - Super usuario</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<!-- data-rol="admin": solo el super usuario puede ver esta página (lo revisa js/sesion.js) -->
+<body data-rol="admin">
+
+  <header class="barra">
+    <a href="admin.html">VETSERVICE2GO · Super usuario</a>
+    <span class="usuario">
+      Hola, <span id="nombreUsuario"></span>
+      <button type="button" class="boton-chico" id="btnCerrarSesion">Cerrar sesión</button>
+    </span>
+  </header>
+
+  <!-- PANTALLA DEL SUPER USUARIO: administrar las cuentas -->
+  <main class="contenedor contenedor-ancho">
+
+    <h1>🛡️ Administrar personas</h1>
+    <p class="subtitulo">Agrega, modifica o borra cuentas, y convierte clientes en empleados.</p>
+
+    <!-- El mismo formulario sirve para agregar y para modificar (lo decide js/admin.js) -->
+    <section class="tarjeta formulario-persona">
+      <h3 id="tituloFormulario">➕ Agregar persona</h3>
+
+      <label class="etiqueta" for="nombre">Nombre</label>
+      <input type="text" id="nombre" placeholder="Nombre completo">
+
+      <label class="etiqueta" for="correo">Correo</label>
+      <input type="email" id="correo" placeholder="nombre.apellido@gmail.com">
+
+      <!-- type="text" para que el super usuario vea la contraseña que escribe -->
+      <label class="etiqueta" for="password" id="etiquetaPassword">Contraseña</label>
+      <input type="text" id="password" placeholder="Contraseña">
+
+      <label class="etiqueta" for="rol">Rol</label>
+      <select id="rol">
+        <option value="cliente">Cliente</option>
+        <option value="empleado">Empleado</option>
+      </select>
+
+      <button type="button" class="boton" id="btnGuardar">Agregar persona</button>
+      <button type="button" class="boton boton-secundario" id="btnCancelar" hidden>Cancelar</button>
+    </section>
+
+    <!-- Lista de todas las cuentas (la llena js/admin.js) -->
+    <h2>Personas (<span id="totalUsuarios">0</span>)</h2>
+    <div class="tabla-contenedor">
+      <table class="tabla">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Rol</th>
+            <th>Mascotas</th>
+            <th>Recibos</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="cuerpoTabla"></tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <script src="js/basedatos.js"></script>
+  <script src="js/sesion.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

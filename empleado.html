@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VETSERVICE2GO - Tickets pagados</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<!-- data-rol="empleado": solo los empleados pueden ver esta página (lo revisa js/sesion.js) -->
+<body data-rol="empleado">
+
+  <header class="barra">
+    <a href="empleado.html">VETSERVICE2GO · Empleados</a>
+    <span class="usuario">
+      Hola, <span id="nombreUsuario"></span>
+      <button type="button" class="boton-chico" id="btnCerrarSesion">Cerrar sesión</button>
+    </span>
+  </header>
+
+  <!-- PANTALLA DEL EMPLEADO: tickets pagados -->
+  <main class="contenedor">
+
+    <h1>🩺 Tickets pagados</h1>
+    <p class="subtitulo">Citas que los clientes ya pagaron. Da el servicio y márcalo como completado, o recházalo si no se puede atender.</p>
+
+    <!-- Tickets por atender (los llena js/empleado.js) -->
+    <h2>Pendientes (<span id="totalPendientes">0</span>)</h2>
+    <p class="vacio" id="sinPendientes" hidden>No hay tickets pendientes. ¡Buen trabajo! 🎉</p>
+    <div class="tarjetas" id="listaPendientes"></div>
+
+    <!-- <details> se abre y se cierra con un clic, sin necesidad de JavaScript -->
+    <details class="historial">
+      <summary>Completados (<span id="totalCompletados">0</span>)</summary>
+      <p class="vacio" id="sinCompletados" hidden>Todavía no hay tickets completados.</p>
+      <div class="tarjetas" id="listaCompletados"></div>
+    </details>
+
+    <details class="historial">
+      <summary>Rechazados (<span id="totalRechazados">0</span>)</summary>
+      <p class="vacio" id="sinRechazados" hidden>No hay tickets rechazados.</p>
+      <p class="subtitulo">Cuando el cliente reagenda, el ticket regresa a «Pendientes» con su nueva fecha.</p>
+      <div class="tarjetas" id="listaRechazados"></div>
+    </details>
+
+  </main>
+
+  <script src="js/basedatos.js"></script>
+  <script src="js/sesion.js"></script>
+  <script src="js/formato.js"></script>
+  <script src="js/empleado.js"></script>
+</body>
+</html>

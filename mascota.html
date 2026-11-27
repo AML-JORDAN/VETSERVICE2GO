@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VETSERVICE2GO - Registrar mascota</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body data-rol="cliente">
+
+  <header class="barra">
+    <a href="panel.html">VETSERVICE2GO</a>
+    <span class="usuario">
+      Hola, <span id="nombreUsuario"></span>
+      <button type="button" class="boton-chico" id="btnCerrarSesion">Cerrar sesión</button>
+    </span>
+  </header>
+
+  <!-- REGISTRAR MASCOTA (en Android: MainActivity) -->
+  <main class="pantalla">
+
+    <h2>Registrar Mascota</h2>
+
+    <!-- Foto de la mascota (opcional). Empieza con el logo y cambia al elegir una foto. -->
+    <img class="foto-mascota" id="vistaPrevia" src="img/logo_vet.png" alt="Foto de la mascota">
+    <!-- El <label> funciona como botón: al hacer clic abre el selector de archivos -->
+    <label class="boton-foto" for="foto">📷 Subir foto de mascota</label>
+    <input type="file" id="foto" accept="image/*" hidden>
+
+    <input type="text" id="nombreMascota" placeholder="Nombre de la mascota">
+
+    <!-- Lista desplegable (en Android: Spinner) -->
+    <label class="etiqueta" for="especie">Especie:</label>
+    <select id="especie">
+      <option value="">Seleccione especie...</option>
+      <option value="Perro">Perro</option>
+      <option value="Gato">Gato</option>
+      <option value="Ave">Ave</option>
+      <option value="Conejo">Conejo</option>
+      <option value="Otro">Otro</option>
+    </select>
+
+    <input type="text" id="raza" placeholder="Raza (opcional)">
+    <input type="number" id="peso" placeholder="Peso aproximado (kg)" min="0" step="0.1">
+
+    <button type="button" class="boton" id="btnGuardar">Guardar mascota</button>
+    <a class="boton boton-secundario" href="panel.html">Volver al panel</a>
+
+  </main>
+
+  <script src="js/basedatos.js"></script>
+  <script src="js/sesion.js"></script>
+  <script src="js/mascota.js"></script>
+</body>
+</html>

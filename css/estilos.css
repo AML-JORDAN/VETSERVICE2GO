@@ -1,0 +1,994 @@
+/* ============================================
+   ESTILOS DE VETSERVICE2GO
+   Un solo archivo de estilos para todas las páginas
+   (en Android esto sería el "tema" de la app).
+   ============================================ */
+
+/* ---------- Colores de la app ----------
+   Son los mismos de colors.xml en Android.
+   Se usan así: color: var(--ciruela);            */
+:root {
+  --floral-white: #F7F4EA;   /* fondo de las pantallas */
+  --lavender: #DED9E2;       /* fondos suaves */
+  --periwinkle: #C0B9DD;     /* botones secundarios */
+  --wisteria-blue: #80A1D4;  /* campos de texto y horario elegido */
+  --pearl-aqua: #75C9C8;     /* botones principales y día elegido */
+  --ciruela: #5E176F;        /* títulos */
+  --texto: #2C2C2C;          /* texto normal */
+  --texto-suave: #555555;    /* subtítulos */
+  --texto-boton: #1A103C;    /* texto de los botones */
+
+  /* Color de la barra de arriba para cada rol (los clientes usan --ciruela).
+     El azul es el mismo tono que el morado: igual de oscuro, solo cambia el color. */
+  --barra-empleado: #17346F; /* azul */
+  --barra-admin: #424242;    /* gris oscuro */
+}
+
+/* ---------- Toda la página ---------- */
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;             /* tamaño de letra de toda la página */
+  line-height: 1.5;
+  background-color: var(--floral-white);
+  color: var(--texto);
+}
+
+h1 {
+  font-size: 34px;
+  margin: 0 0 8px 0;
+  color: var(--ciruela);
+}
+
+h2 {
+  font-size: 30px;
+  margin: 0 0 20px 0;
+  color: var(--ciruela);
+}
+
+h3 {
+  font-size: 22px;
+}
+
+/* Lo que tiene el atributo "hidden" no se muestra */
+[hidden] {
+  display: none !important;
+}
+
+/* ============================================
+   PARTE PÚBLICA (Inicio y Servicios)
+   ============================================ */
+
+/* Menú de arriba */
+.menu {
+  background-color: var(--ciruela);
+  display: flex;               /* pone los elementos en fila */
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;             /* si no caben, pasan a otra línea */
+  gap: 12px;
+  padding: 12px 20px;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  margin-left: 16px;
+  font-size: 18px;
+}
+
+.menu a:hover {
+  text-decoration: underline;
+}
+
+.menu .marca {
+  margin-left: 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.marca img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;          /* el logo es redondo */
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+/* Botón "Iniciar sesión" dentro del menú */
+.menu .boton-menu {
+  background-color: var(--pearl-aqua);
+  color: var(--texto-boton);
+  font-weight: bold;
+  padding: 8px 14px;
+  border-radius: 6px;
+}
+
+/* Portada: la parte grande del principio */
+.portada {
+  background-color: var(--lavender);
+  text-align: center;
+  padding: 48px 16px;
+}
+
+.portada .portada-logo {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+}
+
+.portada h1 {
+  font-size: 44px;
+  margin-top: 16px;
+}
+
+.portada p {
+  max-width: 600px;
+  margin: 0 auto 24px auto;
+  font-size: 22px;
+  line-height: 1.5;
+}
+
+/* Contenedor: centra el contenido y no deja que sea demasiado ancho */
+.contenedor {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 32px 16px;
+}
+
+.contenedor > p {
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.centrado {
+  text-align: center;
+}
+
+/* ---------- Portada con foto (Inicio) ----------
+   En computadora: el texto a la izquierda y la foto a la derecha.
+   En celular: uno debajo del otro (ver @media más abajo). */
+.portada-contenido {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  text-align: left;
+}
+
+.portada-texto {
+  flex: 1;
+}
+
+.portada-contenido .portada-texto p {
+  margin: 0 0 24px 0;
+}
+
+.portada-foto {
+  flex: 1;
+  width: 100%;
+  max-width: 520px;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;           /* recorta la foto sin deformarla */
+  border-radius: 20px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* ---------- Secciones con foto ---------- */
+
+/* Dos columnas: texto y foto lado a lado */
+.dos-columnas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+/* Foto grande de una sección */
+.foto-seccion {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Foto ancha y bajita (como una franja) */
+.foto-banda {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 24px;
+}
+
+/* Fondo blanco de lado a lado, para separar unas secciones de otras */
+.franja {
+  background-color: white;
+}
+
+/* Foto arriba de una tarjeta, pegada a sus orillas */
+.tarjeta-foto {
+  display: block;
+  width: calc(100% + 40px);    /* 40px = el padding de la tarjeta (20px de cada lado) */
+  margin: -20px -20px 12px -20px;
+  height: 190px;               /* todas las fotos de las tarjetas, de la misma altura */
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+}
+
+/* Galería de fotos de mascotas */
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.galeria figure {
+  margin: 0;
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;            /* para que la foto respete las esquinas redondas */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.galeria img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;         /* todas las fotos cuadradas */
+  object-fit: cover;
+}
+
+.galeria figcaption {
+  padding: 10px 12px;
+  font-weight: bold;
+  color: var(--ciruela);
+  text-align: center;
+}
+
+/* Lista de consejos: cada renglón empieza con su dibujito */
+.lista-consejos {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lista-consejos li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--lavender);
+}
+
+.lista-consejos strong {
+  color: var(--ciruela);
+}
+
+/* Preguntas frecuentes: <details> se abre y se cierra al hacer clic */
+.pregunta {
+  background-color: var(--floral-white);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+}
+
+.pregunta summary {
+  font-weight: bold;
+  font-size: 19px;
+  color: var(--ciruela);
+  cursor: pointer;
+}
+
+.pregunta p {
+  margin: 12px 0 0 0;
+}
+
+/* Combinaciones de servicios con su total */
+.combinacion {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--lavender);
+}
+
+.combinacion strong {
+  color: var(--ciruela);
+  white-space: nowrap;
+}
+
+/* En pantallas angostas (celulares y tabletas) todo va en una sola columna */
+@media (max-width: 800px) {
+  .portada-contenido {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .dos-columnas {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .portada .portada-foto {
+    max-width: 100%;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  .portada h1 {
+    font-size: 34px;
+  }
+
+  h2 {
+    font-size: 26px;
+  }
+
+  .foto-banda {
+    height: 200px;
+  }
+
+  /* En celular, la galería en dos columnas */
+  .galeria {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}
+
+/* Filas de 4 tarjetas: cada una puede ser más angosta para que quepan las 4 juntas */
+.tarjetas-cuatro .tarjeta {
+  flex-basis: 160px;           /* + 40px de padding = 200px por tarjeta */
+}
+
+/* Un título que va después de tarjetas o de dos columnas necesita aire arriba */
+.tarjetas + h2,
+.dos-columnas + h2 {
+  margin-top: 40px;
+}
+
+/* Texto chico debajo del botón para descargar la app */
+.nota-descarga {
+  font-size: 16px;
+  color: var(--texto-suave);
+}
+
+/* Tarjetas: cajas blancas que se acomodan en fila */
+.tarjetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.tarjeta {
+  flex: 1 1 260px;            /* cada tarjeta mide al menos 260px */
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  line-height: 1.5;
+}
+
+.tarjeta h3 {
+  margin-top: 0;
+  color: var(--ciruela);
+}
+
+.icono {
+  font-size: 46px;
+}
+
+.precio {
+  font-size: 30px;
+  font-weight: bold;
+  color: var(--ciruela);
+  margin: 12px 0 0 0;
+}
+
+/* Pie de página */
+.pie {
+  text-align: center;
+  color: var(--texto-suave);
+  font-size: 17px;
+  padding: 24px 16px;
+}
+
+/* ============================================
+   PARTE PRIVADA (después de iniciar sesión)
+   ============================================ */
+
+/* Barra de arriba con el nombre de la app */
+.barra {
+  background-color: var(--ciruela);
+  color: white;
+  padding: 16px 20px;
+  font-size: 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.barra a {
+  color: white;
+  text-decoration: none;
+}
+
+/* La barra cambia de color según para quién es la página.
+   [data-rol="empleado"] busca la etiqueta que tiene ese atributo: <body data-rol="empleado"> */
+body[data-rol="empleado"] .barra {
+  background-color: var(--barra-empleado);
+}
+
+body[data-rol="admin"] .barra {
+  background-color: var(--barra-admin);
+}
+
+.barra .usuario {
+  font-size: 17px;
+}
+
+/* Tarjetas del panel que funcionan como botones grandes */
+.tarjeta-accion {
+  color: var(--texto);
+  text-decoration: none;
+  border: 2px solid transparent;
+}
+
+.tarjeta-accion:hover {
+  border-color: var(--pearl-aqua);
+}
+
+/* Listas del panel (mis mascotas, próximas citas) */
+.lista {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px 0;
+}
+
+.lista li {
+  display: flex;               /* foto y texto en la misma línea */
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--lavender);
+}
+
+.lista a {
+  color: var(--ciruela);
+}
+
+.vacio {
+  color: var(--texto-suave);
+}
+
+/* Foto chiquita y redonda de la mascota */
+.foto-mini {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;           /* recorta la foto sin deformarla */
+  flex-shrink: 0;
+}
+
+.emoji-mini {
+  width: 40px;
+  font-size: 28px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* Aviso del panel con las citas rechazadas */
+.aviso-rechazo {
+  border-left: 6px solid #a32f2f;
+  margin-bottom: 16px;
+}
+
+.aviso-rechazo h3 {
+  color: #a32f2f;
+}
+
+/* margin-left: auto empuja el enlace a la derecha del renglón */
+.lista a.enlace-reagendar {
+  margin-left: auto;
+  font-weight: bold;
+  white-space: nowrap;        /* que "Reagendar →" no se parta en dos renglones */
+}
+
+/* Tabla de recibos */
+.tabla-contenedor {
+  overflow-x: auto;            /* en celular la tabla se puede deslizar */
+  background-color: white;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.tabla {
+  width: 100%;
+  border-collapse: collapse;   /* une los bordes de las celdas */
+  font-size: 17px;
+}
+
+.tabla th,
+.tabla td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--lavender);
+  white-space: nowrap;
+}
+
+/* La fecha y los servicios son largos: ahí el texto sí puede bajar de renglón,
+   para que la tabla quepa en la pantalla */
+.tabla td.celda-larga {
+  white-space: normal;
+  min-width: 120px;
+}
+
+.tabla th {
+  background-color: var(--lavender);
+  color: var(--ciruela);
+}
+
+.tabla a {
+  color: var(--ciruela);
+  font-weight: bold;
+}
+
+/* ============================================
+   PANTALLAS CON FORMULARIO (login, mascota, etc.)
+   ============================================ */
+
+/* La "pantalla": una caja blanca centrada, del ancho de un celular */
+.pantalla {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 24px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Versión un poco más ancha (para el calendario) */
+.pantalla-ancha {
+  max-width: 460px;
+  text-align: left;
+}
+
+/* En celulares dejamos un espacio a los lados */
+@media (max-width: 520px) {
+  .pantalla {
+    margin: 16px;
+    padding: 18px;
+  }
+}
+
+.logo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 16px;
+}
+
+.subtitulo {
+  color: var(--texto-suave);
+  font-size: 17px;
+  margin: 0 0 28px 0;
+}
+
+/* Textos pequeños que van arriba de un campo */
+.etiqueta {
+  display: block;
+  text-align: left;
+  font-size: 16px;
+  color: var(--texto-suave);
+  margin-bottom: 4px;
+}
+
+.etiqueta-negrita {
+  font-weight: bold;
+  color: var(--ciruela);
+}
+
+/* Cajas de texto, números y la lista desplegable */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+select {
+  width: 100%;
+  box-sizing: border-box; /* para que el padding no haga la caja más ancha */
+  padding: 12px;
+  margin-bottom: 16px;
+  font-size: 18px;
+  color: var(--texto);
+  background-color: white;
+  border: 1px solid var(--periwinkle);
+  border-bottom: 2px solid var(--wisteria-blue);
+  border-radius: 6px;
+}
+
+/* Cuando el usuario hace clic dentro de un campo */
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--wisteria-blue);
+}
+
+/* Grupo de opciones (casillas o botones de opción) */
+.opciones {
+  text-align: left;
+  margin-bottom: 12px;
+}
+
+.opciones label {
+  display: block;
+  padding: 8px 0;
+  cursor: pointer;
+}
+
+/* Casillas un poco más grandes y del color de la app */
+.opciones input {
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+  accent-color: var(--pearl-aqua);
+}
+
+/* ---------- Botones ---------- */
+
+/* Botón principal (Pearl Aqua, como en la app) */
+.boton {
+  width: 100%;
+  padding: 16px;
+  margin-bottom: 12px;
+  font-size: 17px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--texto-boton);
+  background-color: var(--pearl-aqua);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.boton:hover {
+  background-color: #5fb5b4;
+}
+
+/* Botón secundario (Periwinkle, como en la app) */
+.boton-secundario {
+  background-color: var(--periwinkle);
+}
+
+.boton-secundario:hover {
+  background-color: #aea6d2;
+}
+
+/* Enlace <a> que se ve como botón ancho */
+a.boton {
+  display: block;
+  box-sizing: border-box;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Enlace <a> que se ve como botón, del tamaño de su texto */
+a.boton-enlace {
+  display: inline-block;
+  width: auto;
+  padding: 14px 24px;
+  margin: 4px;
+}
+
+/* Botón pequeño "Cerrar sesión" de la barra */
+.boton-chico {
+  font-size: 15px;
+  background-color: var(--periwinkle);
+  color: var(--texto-boton);
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.enlace-inicio {
+  display: inline-block;
+  margin-top: 8px;
+  color: var(--ciruela);
+}
+
+/* ---------- Foto de la mascota ---------- */
+
+.foto-mascota {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: var(--lavender);
+  display: block;
+  margin: 0 auto 10px auto;
+}
+
+/* El <label> que abre el selector de archivos se ve como botón */
+.boton-foto {
+  display: inline-block;
+  padding: 10px 16px;
+  margin-bottom: 20px;
+  font-size: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--texto-boton);
+  background-color: var(--wisteria-blue);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* ---------- Agendar cita ---------- */
+
+/* Encabezado de cada paso: "(1/3) Mascota" */
+.paso {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--ciruela);
+  margin: 24px 0 4px 0;
+}
+
+.paso-titulo {
+  margin-bottom: 4px;
+}
+
+.total-vivo {
+  font-size: 21px;
+  font-weight: bold;
+  color: var(--ciruela);
+  text-align: right;
+  margin: 0 0 8px 0;
+}
+
+/* Tarjeta gris del calendario y los horarios (como en la app) */
+.calendario {
+  background-color: #f5f5f5;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  padding: 12px;
+  margin-bottom: 20px;
+}
+
+/* Fila de arriba:  <   Noviembre de 2026   > */
+.calendario-mes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.flecha-mes {
+  background: none;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 6px 12px;
+  cursor: pointer;
+  color: var(--texto);
+}
+
+.flecha-mes:disabled {
+  color: #cccccc;
+  cursor: default;
+}
+
+/* Cuadrícula de 7 columnas: una por cada día de la semana */
+.dias-semana,
+.dias {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+}
+
+.dias-semana span {
+  color: var(--texto-suave);
+  padding: 8px 0;
+}
+
+.dia {
+  width: 40px;
+  height: 40px;
+  margin: 3px auto;
+  border: none;
+  border-radius: 50%;          /* círculo */
+  background: none;
+  font-size: 17px;
+  color: var(--texto);
+  cursor: pointer;
+}
+
+.dia:hover {
+  background-color: var(--lavender);
+}
+
+.dia.elegido {
+  background-color: var(--pearl-aqua);
+  color: white;
+}
+
+.dia:disabled {
+  color: #c4c4c4;
+  background: none;
+  cursor: default;
+}
+
+.texto-horarios {
+  font-weight: bold;
+  margin: 16px 0 10px 0;
+}
+
+/* Cada horario es un botón blanco de lado a lado */
+.horario {
+  display: block;
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 8px;
+  border: none;
+  border-radius: 4px;
+  background-color: white;
+  color: var(--texto-boton);
+  font-size: 17px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.horario.elegido {
+  background-color: var(--wisteria-blue);
+  font-weight: bold;
+}
+
+.horario:disabled {
+  color: #999999;
+  background-color: #ececec;
+  cursor: default;
+}
+
+/* ---------- Recibo ---------- */
+
+.caja-recibo {
+  background-color: var(--floral-white);
+  color: var(--texto);
+  padding: 16px;
+  margin-bottom: 28px;
+  text-align: left;
+  line-height: 1.8;
+  border-radius: 6px;
+  border: 1px solid var(--lavender);
+}
+
+.total {
+  font-weight: bold;
+  font-size: 20px;
+  color: var(--ciruela);
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #cccccc;
+}
+
+/* ---------- Pantalla del empleado ---------- */
+
+/* Cada ticket es una tarjeta con sus datos en columna */
+.ticket {
+  display: flex;
+  flex-direction: column;
+}
+
+.ticket-cabecera {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  font-size: 20px;
+  color: var(--ciruela);
+}
+
+.ticket-linea {
+  margin: 4px 0;
+}
+
+/* margin-top: auto empuja los botones hasta abajo de la tarjeta */
+.ticket-botones {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ticket .boton {
+  margin: 0;
+  padding: 12px;
+}
+
+/* Botón "Rechazar": solo con borde, para no confundirlo con el principal.
+   Le quitamos 2px de relleno porque el borde ya mide 2px (así mide lo mismo que el otro). */
+.ticket .boton-rechazar {
+  color: #a32f2f;
+  background-color: transparent;
+  border: 2px solid #a32f2f;
+  padding: 10px;
+}
+
+.boton-rechazar:hover {
+  background-color: #f8e1e1;
+}
+
+.ticket-hecho {
+  margin: 12px 0 0 0;
+  color: #2b7f7e;
+  font-weight: bold;
+}
+
+.ticket-rechazado {
+  margin: 12px 0 0 0;
+  color: #a32f2f;
+  font-weight: bold;
+}
+
+/* Etiqueta "HOY" para las citas del día */
+.etiqueta-hoy {
+  background-color: var(--pearl-aqua);
+  color: var(--texto-boton);
+  font-size: 14px;
+  font-weight: bold;
+  padding: 3px 10px;
+  border-radius: 10px;
+}
+
+/* Secciones "Completados" y "Rechazados" que se abren y se cierran */
+.historial {
+  margin-top: 32px;
+}
+
+.historial summary {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--ciruela);
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+
+/* ---------- Pantalla del super usuario ---------- */
+
+/* Un poco más ancha que las demás, para que quepa la tabla con sus botones */
+.contenedor-ancho {
+  max-width: 1100px;
+}
+
+/* El formulario no necesita ser tan ancho como la página */
+.formulario-persona {
+  max-width: 460px;
+  margin-bottom: 24px;
+}
+
+/* Botones chicos de cada renglón: Editar, Hacer empleado y Borrar */
+.acciones .boton-chico {
+  margin: 0 6px 0 0;
+}
+
+.acciones .boton-borrar {
+  color: #a32f2f;
+  background-color: transparent;
+  border: 2px solid #a32f2f;
+  padding: 4px 8px;
+}
+
+/* Al imprimir el recibo, ocultamos la barra y los botones */
+@media print {
+  body {
+    background-color: white;
+  }
+  .barra,
+  .boton {
+    display: none;
+  }
+}

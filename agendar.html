@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VETSERVICE2GO - Agendar cita</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body data-rol="cliente">
+
+  <header class="barra">
+    <a href="panel.html">VETSERVICE2GO</a>
+    <span class="usuario">
+      Hola, <span id="nombreUsuario"></span>
+      <button type="button" class="boton-chico" id="btnCerrarSesion">Cerrar sesión</button>
+    </span>
+  </header>
+
+  <!-- AGENDAR CITA (en Android: MainActivity + FechaHoraActivity) -->
+  <main class="pantalla pantalla-ancha">
+
+    <h1 id="tituloAgendar">📅 Agendar Cita</h1>
+
+    <!-- Se muestra solo si el usuario todavía no tiene mascotas -->
+    <div id="sinMascotas" hidden>
+      <p>Primero necesitas registrar una mascota.</p>
+      <a class="boton" href="mascota.html">Registrar mascota</a>
+    </div>
+
+    <!-- Solo al reagendar un ticket rechazado (agendar.html?reagendar=5).
+         La mascota y los servicios no cambian: solo se elige otro día y otra hora. -->
+    <div class="caja-recibo" id="datosReagendar" hidden>
+      <strong>Ticket:</strong> <span id="reagendarFolio"></span><br>
+      <strong>Mascota:</strong> <span id="reagendarMascota"></span><br>
+      <strong>Servicios:</strong> <span id="reagendarServicios"></span><br>
+      <strong>Motivo del rechazo:</strong> <span id="reagendarMotivo"></span>
+    </div>
+
+    <div id="formulario">
+
+      <!-- Los pasos 1 y 2 se esconden al reagendar -->
+      <div id="pasosMascotaServicios">
+
+        <!-- ===== PASO 1: MASCOTA ===== -->
+        <p class="paso">(1/3) Mascota</p>
+        <h2 class="paso-titulo">¿Quién viene?</h2>
+        <p class="subtitulo">Elige una de tus mascotas registradas</p>
+        <!-- Las opciones de esta lista se llenan con las mascotas de la base de datos -->
+        <select id="mascota">
+          <option value="">Seleccione una mascota...</option>
+        </select>
+
+        <!-- ===== PASO 2: SERVICIOS ===== -->
+        <p class="paso">(2/3) Servicios</p>
+        <h2 class="paso-titulo">¿Qué necesita?</h2>
+        <p class="subtitulo">Puedes elegir uno o varios servicios</p>
+        <!-- Casillas (en Android: CheckBox). data-precio guarda el costo de cada servicio. -->
+        <div class="opciones">
+          <label><input type="checkbox" name="servicio" value="Consulta General" data-precio="350"> Consulta General ($350)</label>
+          <label><input type="checkbox" name="servicio" value="Vacunación" data-precio="400"> Vacunación ($400)</label>
+          <label><input type="checkbox" name="servicio" value="Desparasitación" data-precio="250"> Desparasitación ($250)</label>
+          <label><input type="checkbox" name="servicio" value="Baño y Estética" data-precio="300"> Baño y Estética ($300)</label>
+          <label><input type="checkbox" name="servicio" value="Urgencias" data-precio="600"> Urgencias ($600)</label>
+        </div>
+        <p class="total-vivo">Total: <span id="total">$0.00 MXN</span></p>
+
+      </div>
+
+      <!-- ===== PASO 3: FECHA Y HORA ===== -->
+      <p class="paso" id="paso3">(3/3) Fecha y hora</p>
+      <h2 class="paso-titulo">¿Cuándo vamos?</h2>
+      <p class="subtitulo">Indícanos la fecha y hora de la cita con tu veterinario</p>
+
+      <div class="calendario">
+        <!-- Mes que se está viendo, con flechas para cambiar -->
+        <div class="calendario-mes">
+          <button type="button" class="flecha-mes" id="btnMesAnterior" aria-label="Mes anterior">‹</button>
+          <span id="nombreMes"></span>
+          <button type="button" class="flecha-mes" id="btnMesSiguiente" aria-label="Mes siguiente">›</button>
+        </div>
+
+        <!-- Domingo, lunes, martes, miércoles, jueves, viernes, sábado -->
+        <div class="dias-semana">
+          <span>D</span><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span>
+        </div>
+
+        <!-- Los días se crean desde js/agendar.js -->
+        <div class="dias" id="dias"></div>
+
+        <p class="texto-horarios">↓ Selecciona un horario disponible para el <span id="fechaElegidaTexto"></span>:</p>
+
+        <!-- Los horarios también se crean desde js/agendar.js -->
+        <div id="horarios"></div>
+      </div>
+
+      <button type="button" class="boton" id="btnConfirmar">Confirmar cita</button>
+    </div>
+
+    <a class="boton boton-secundario" href="panel.html">Volver al panel</a>
+
+  </main>
+
+  <script src="js/basedatos.js"></script>
+  <script src="js/sesion.js"></script>
+  <script src="js/formato.js"></script>
+  <script src="js/agendar.js"></script>
+</body>
+</html>

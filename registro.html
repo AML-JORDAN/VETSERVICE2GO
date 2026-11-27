@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VETSERVICE2GO - Crear cuenta</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <nav class="menu">
+    <a class="marca" href="index.html"><img src="img/logo_vet.png" alt="">VETSERVICE2GO</a>
+    <div>
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="index.html#mision">Misión y Visión</a>
+      <a href="index.html#preguntas">Preguntas</a>
+      <a class="boton-menu" href="login.html">Iniciar sesión</a>
+    </div>
+  </nav>
+
+  <!-- CREAR CUENTA (en Android: RegisterActivity) -->
+  <main class="pantalla">
+
+    <img class="logo" src="img/logo_vet.png" alt="Logo VETSERVICE2GO">
+
+    <h2>Crear Cuenta Nueva</h2>
+
+    <input type="text" id="nombre" placeholder="Nombre completo">
+    <input type="email" id="correo" placeholder="Correo electrónico">
+    <input type="password" id="password" placeholder="Contraseña">
+
+    <button type="button" class="boton" id="btnRegistrarse">Registrarse</button>
+    <button type="button" class="boton boton-secundario" id="btnVolver">¿Ya tienes cuenta? Inicia sesión</button>
+
+  </main>
+
+  <script src="js/basedatos.js"></script>
+  <script src="js/registro.js"></script>
+</body>
+</html>

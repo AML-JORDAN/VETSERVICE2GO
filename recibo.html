@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VETSERVICE2GO - Recibo</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body data-rol="cliente">
+
+  <header class="barra">
+    <a href="panel.html">VETSERVICE2GO</a>
+    <span class="usuario">
+      Hola, <span id="nombreUsuario"></span>
+      <button type="button" class="boton-chico" id="btnCerrarSesion">Cerrar sesión</button>
+    </span>
+  </header>
+
+  <!-- RECIBO DE LA CITA (en Android: ResumenActivity) -->
+  <main class="pantalla">
+
+    <img class="logo" src="img/logo_vet.png" alt="Logo VETSERVICE2GO">
+
+    <!-- El título cambia si la cita se acaba de agendar (lo decide js/recibo.js) -->
+    <h1 id="titulo">Recibo</h1>
+    <p class="subtitulo" id="subtitulo"></p>
+
+    <!-- Los <span> vacíos se llenan desde js/recibo.js -->
+    <div class="caja-recibo">
+      <img class="foto-mascota" id="fotoMascota" alt="Foto de la mascota" hidden>
+      <strong>Folio:</strong> <span id="folio"></span><br>
+      <strong>Propietario:</strong> <span id="cliente"></span><br>
+      <strong>Mascota:</strong> <span id="mascota"></span><br>
+      <strong>Peso:</strong> <span id="peso"></span> kg<br>
+      <strong>Fecha:</strong> <span id="fecha"></span><br>
+      <strong>Horario:</strong> <span id="horario"></span><br>
+      <strong>Servicios:</strong>
+      <ul id="listaServicios"></ul>
+      <p class="total">Total pagado: <span id="total"></span></p>
+      <strong>Estado:</strong> <span id="estado"></span><br>
+      <small>Recibo generado el <span id="creado"></span></small>
+    </div>
+
+    <!-- Solo se ve si un empleado rechazó el ticket (lo decide js/recibo.js) -->
+    <a class="boton" id="btnReagendar" hidden>🔁 Reagendar cita</a>
+    <button type="button" class="boton" id="btnImprimir">Imprimir recibo</button>
+    <a class="boton" href="panel.html">Finalizar y volver al panel</a>
+    <a class="boton boton-secundario" href="recibos.html">Ver mis recibos</a>
+
+  </main>
+
+  <script src="js/basedatos.js"></script>
+  <script src="js/sesion.js"></script>
+  <script src="js/formato.js"></script>
+  <script src="js/recibo.js"></script>
+</body>
+</html>
